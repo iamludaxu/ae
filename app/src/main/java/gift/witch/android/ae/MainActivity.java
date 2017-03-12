@@ -1,7 +1,7 @@
 package gift.witch.android.ae;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +20,7 @@ import gift.witch.android.ae.logger.LoggerActivity;
 /**
  *
  */
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class MainActivity extends Activity implements AdapterView.OnItemClickListener {
 
 
     private ListView mListViewLV;
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mListViewLV.setOnItemClickListener(this);
 
     }
+
 
 
     @Override

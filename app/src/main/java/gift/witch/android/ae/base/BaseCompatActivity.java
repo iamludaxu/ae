@@ -1,13 +1,14 @@
 package gift.witch.android.ae.base;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.MenuItem;
 
-public class BaseCompatActivity extends AppCompatActivity {
+public class BaseCompatActivity extends Activity{
+
 
     public static void start(Activity activity, String title, Class<?> cls) {
         Intent intent = new Intent();
@@ -19,7 +20,7 @@ public class BaseCompatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             String title = this.getIntent().getStringExtra("TITLE");
@@ -27,6 +28,16 @@ public class BaseCompatActivity extends AppCompatActivity {
                 actionBar.setTitle(title);
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
