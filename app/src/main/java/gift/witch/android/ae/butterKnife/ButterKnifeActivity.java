@@ -1,7 +1,5 @@
 package gift.witch.android.ae.butterKnife;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -23,12 +21,6 @@ import gift.witch.android.ae.base.BaseCompatActivity;
  */
 public class ButterKnifeActivity extends BaseCompatActivity {
 
-
-    public static void start(Activity activity){
-        Intent intent = new Intent();
-        intent.setClass(activity,ButterKnifeActivity.class);
-        activity.startActivity(intent);
-    }
 
 
     private Unbinder mUnbinder;

@@ -15,9 +15,12 @@ import java.util.List;
 
 import gift.witch.android.ae.base.BaseCompatActivity;
 import gift.witch.android.ae.butterKnife.ButterKnifeActivity;
+import gift.witch.android.ae.logger.LoggerActivity;
 
+/**
+ *
+ */
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-
 
 
     private ListView mListViewLV;
@@ -25,9 +28,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static List<ListViewItemData> mData =new ArrayList<ListViewItemData>();
 
     static {
-
+        /**
+         * 例子列表
+         */
         mData.add(new ListViewItemData("ButterKnife", ButterKnifeActivity.class));
-        mData.add(new ListViewItemData("ButterKnife", ButterKnifeActivity.class));
+        mData.add(new ListViewItemData("Logger", LoggerActivity.class));
     }
 
     @Override
@@ -41,10 +46,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ListViewItemData data = (ListViewItemData)parent.getItemAtPosition(position);
-        BaseCompatActivity.start(this,data.classs);
+        BaseCompatActivity.start(this,data.title,data.classs);
     }
 
 
