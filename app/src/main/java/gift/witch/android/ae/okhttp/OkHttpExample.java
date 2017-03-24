@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
+import okhttp3.CacheControl;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -39,7 +40,10 @@ public class OkHttpExample {
         builder.connectTimeout(10_000, TimeUnit.MILLISECONDS);
         builder.readTimeout(10_000, TimeUnit.MILLISECONDS);
         builder.writeTimeout(10_000, TimeUnit.MILLISECONDS);
-
+        /**
+         * 默认是重定向
+         */
+        builder.followRedirects(true);
         /**
          * 应用拦截器
          */
@@ -48,10 +52,7 @@ public class OkHttpExample {
          * 网络拦截器
          */
         builder.addNetworkInterceptor(new MyNetworkInterceptor());
-        /**
-         * 默认是重定向
-         */
-       // builder.followRedirects(true);
+
         /**
          *
          */
@@ -60,6 +61,83 @@ public class OkHttpExample {
         builder.cache(cache);
 
         mClient = builder.build();
+
+    }
+
+
+    /**
+     * 异步发送请求
+     */
+    public void asynchronousGetTest(){
+        Request request = new Request.Builder()
+                .url("http://www.baidu.com")
+                .build();
+        Call call = mClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Logger.i(response.body().string());
+            }
+        });
+    }
+
+    /**
+     * 同步发送请求
+     */
+    public void synchronousGetTest(){
+        Request request = new Request.Builder()
+                .url("http://www.baidu.com")
+                .build();
+        Call call = mClient.newCall(request);
+        try {
+            Response response = call.execute();
+            if (response.isSuccessful()){
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public void test0(){
+        Request.Builder builder = new Request.Builder();
+        /**
+         * 请求地址
+         * builder.url(String url);
+         * builder.url(URL url);
+         * builder.url(HttpUrl url);
+         */
+        builder.url("http://www.baidu.com");
+        /**
+         * 头文件操作
+         */
+        builder.header("User-Agent", "OkHttp Headers.java");
+        builder.addHeader("Accept", "application/json; q=0.5");
+        /**
+         * 对缓存的处理
+         */
+        builder.cacheControl(CacheControl.FORCE_NETWORK);
+        /**
+         *
+         * 请求方式
+         *
+         * builder.get()
+         * builder.head();
+         * builder.post();
+         * builder.put();
+         * builder.patch();
+         * builder.delete();
+         *
+         */
+        builder.get();
+
     }
 
     public Call test1() {
@@ -97,6 +175,7 @@ public class OkHttpExample {
                 Logger.i(response.body().string());
             }
         });
+
         return  call;
     }
 

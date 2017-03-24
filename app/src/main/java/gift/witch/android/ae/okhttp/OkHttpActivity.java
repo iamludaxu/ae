@@ -13,7 +13,7 @@ import okhttp3.Call;
  *
  * OkHttp
  *
- * https://iamludaxu.gitbooks.io/android/content/logger.html
+ * https://iamludaxu.gitbooks.io/android/content/okhttp.html
  *
  */
 public class OkHttpActivity extends BaseCompatActivity implements View.OnClickListener {
