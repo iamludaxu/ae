@@ -19,6 +19,9 @@
 
         <activity android:name=".butterKnife.ButterKnifeActivity"/>
         <activity android:name=".logger.LoggerActivity"/>
+        <activity android:name=".okhttp.OkHttpActivity"/>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -15,7 +15,7 @@ public class BaseApplication extends Application{
 
     private void setConfig(){
 
-        Logger.init().methodCount(1);
+        Logger.init().methodCount(0).hideThreadInfo();
 
     }
 
