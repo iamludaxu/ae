@@ -20,6 +20,8 @@
         <activity android:name=".butterKnife.ButterKnifeActivity"/>
         <activity android:name=".logger.LoggerActivity"/>
         <activity android:name=".okhttp.OkHttpActivity"/>
+        <activity android:name=".retrofit2.Retrofit2Activity"/>
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

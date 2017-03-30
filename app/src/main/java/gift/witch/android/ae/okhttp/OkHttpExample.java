@@ -17,6 +17,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 import okio.BufferedSink;
 
 
@@ -45,6 +46,10 @@ public class OkHttpExample {
          */
         builder.followRedirects(true);
         /**
+         * 日志打印
+         */
+        builder.addInterceptor(new HttpLoggingInterceptor());
+        /**
          * 应用拦截器
          */
         builder.addInterceptor(new MyInterceptor());
@@ -58,7 +63,7 @@ public class OkHttpExample {
          */
         int cacheSize = 10 * 1024 * 1024; // 10 MiB
         Cache cache = new Cache(new File(""), cacheSize);
-        builder.cache(cache);
+        //builder.cache(cache);
 
         mClient = builder.build();
 
@@ -103,8 +108,6 @@ public class OkHttpExample {
             e.printStackTrace();
         }
     }
-
-
 
     public void test0(){
         Request.Builder builder = new Request.Builder();
@@ -154,7 +157,7 @@ public class OkHttpExample {
                 /**
                  * 控制缓存
                  */
-                //.cacheControl(CacheControl.FORCE_NETWORK)
+                .cacheControl(CacheControl.FORCE_NETWORK)
                 /**
                  * 头文件操作
                  */
