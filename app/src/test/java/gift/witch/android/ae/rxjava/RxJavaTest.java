@@ -127,6 +127,7 @@ public class RxJavaTest {
 
     @Test
     public void testInterval(){
+
         Observable intervalObservable = Observable.interval(2,1, TimeUnit.SECONDS).subscribeOn(Schedulers.io());//每隔一秒发送一次
         //intervalObservable.subscribe(createIntObserver());
 
