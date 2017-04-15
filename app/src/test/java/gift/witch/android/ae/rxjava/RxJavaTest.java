@@ -76,11 +76,75 @@ public class RxJavaTest {
             }
         };
 
+        Subscriber subscriber =  new Subscriber<String>(){
+
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+
+            }
+        };
+        subscriber.unsubscribe();
         /**
          * subscribe订阅认购
          */
         observable.subscribe(observer2);
         observable.subscribe(observer1);
+
+    }
+
+    @Test
+    public void testPrimitives2() {
+
+        /**
+         * 创建一个被观察者
+         */
+        Observable<String> observable = Observable.create(new Observable.OnSubscribe<String>() {
+
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                subscriber.onNext("OnSubscribe call");
+                subscriber.onCompleted();
+            }
+        });
+
+        /**
+         * 创建一个观察者
+         */
+        Observer<String> observer = new Observer<String>() {
+
+            @Override
+            public void onCompleted() {
+                //数据接收完成时调用
+                System.out.println("observer1 onCompleted");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                System.out.println("observer1 onError");
+                //发生错误调用
+            }
+
+            @Override
+            public void onNext(String s) {
+                //正常接收数据调用
+                System.out.println("observer1 "+s);
+            }
+        };
+
+        /**
+         * subscribe订阅认购
+         */
+        observable.subscribe(observer);
 
     }
 

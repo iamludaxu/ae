@@ -15,6 +15,7 @@ import java.util.List;
 
 import gift.witch.android.ae.base.BaseCompatActivity;
 import gift.witch.android.ae.butterKnife.ButterKnifeActivity;
+import gift.witch.android.ae.display.DisplayActivity;
 import gift.witch.android.ae.logger.LoggerActivity;
 import gift.witch.android.ae.okhttp.OkHttpActivity;
 import gift.witch.android.ae.retrofit2.Retrofit2Activity;
@@ -39,6 +40,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         mData.add(new ListViewItemData("OkHttp",OkHttpActivity.class));
         mData.add(new ListViewItemData("Retrofit",Retrofit2Activity.class));
         mData.add(new ListViewItemData("RxJava",RxJavaActivity.class));
+        mData.add(new ListViewItemData("Display",DisplayActivity.class));
     }
 
     @Override
