@@ -5,16 +5,22 @@
     android:orientation="vertical">
 
 
+    <include
+        android:id="@+id/top"
+        layout="@layout/view_layout"
+        android:layout_width="100dp"
+        android:layout_height="10dp" />
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="left"
         android:visibility="gone">
 
         <TextView
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_gravity="right"
+            android:layout_gravity="left"
             android:background="#ff00ff" />
 
         <TextView
@@ -74,18 +80,24 @@
             android:id="@+id/text"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true"
-            android:text="ttt"
-            android:background="#ff00FF" />
+            android:layout_marginTop="30dp"
+            android:background="#ff00FF"
+            android:text="ttt" />
 
         <TextView
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:text="ttt"
             android:layout_alignBottom="@+id/text"
-            android:background="#0000FF" />
+            android:background="#0000FF"
+            android:text="ttt" />
 
+
+        <ViewStub
+            android:id="@+id/stub"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:background="#FF0000"/>
     </RelativeLayout>
 
 </LinearLayout>

@@ -2,12 +2,15 @@ package gift.witch.android.ae.layout;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewStub;
 import android.widget.AbsoluteLayout;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
+
+import com.orhanobut.logger.Logger;
 
 import gift.witch.android.ae.R;
 import gift.witch.android.ae.base.BaseCompatActivity;
@@ -27,20 +30,34 @@ public class LayoutActivity extends BaseCompatActivity implements View.OnClickLi
 
     private RelativeLayout mRelativeLayout;
 
+    private ViewStub mViewStub;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout);
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.top);
+        int childCount = linearLayout.getChildCount();
+        Logger.i(TAG+"childCount:"+childCount);
 
+        mViewStub = (ViewStub)findViewById(R.id.stub);
+        mViewStub.setLayoutResource(R.layout.view_layout);
+
+        findViewById(R.id.text).setOnClickListener(this);
+
+        /****
+         * 布局内容
+         */
+        //LayoutInflater.from(this).inflate()
     }
 
 
     @Override
     public void onClick(View v) {
         int vId = v.getId();
-
+        mViewStub.inflate();
     }
 
 
@@ -64,7 +81,7 @@ public class LayoutActivity extends BaseCompatActivity implements View.OnClickLi
         /**
          * 默认子元素从左上角开始布局
          *
-         * 子元素可以用gravity限定位置
+         * 子元素可以用layout_gravity限定位置
          *
          */
         mFrameLayout = new FrameLayout(this);
