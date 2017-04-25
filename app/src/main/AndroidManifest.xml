@@ -8,6 +8,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:hardwareAccelerated="false"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -24,6 +25,7 @@
         <activity android:name=".rxjava.RxJavaActivity" />
         <activity android:name=".display.DisplayActivity" />
         <activity android:name=".layout.LayoutActivity" />
+        <activity android:name=".draw.DrawActivity" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

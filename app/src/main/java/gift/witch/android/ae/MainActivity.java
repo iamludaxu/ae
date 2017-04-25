@@ -16,6 +16,7 @@ import java.util.List;
 import gift.witch.android.ae.base.BaseCompatActivity;
 import gift.witch.android.ae.butterKnife.ButterKnifeActivity;
 import gift.witch.android.ae.display.DisplayActivity;
+import gift.witch.android.ae.draw.DrawActivity;
 import gift.witch.android.ae.layout.LayoutActivity;
 import gift.witch.android.ae.logger.LoggerActivity;
 import gift.witch.android.ae.okhttp.OkHttpActivity;
@@ -43,6 +44,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         mData.add(new ListViewItemData("RxJava",RxJavaActivity.class));
         mData.add(new ListViewItemData("Display",DisplayActivity.class));
         mData.add(new ListViewItemData("Layout",LayoutActivity.class));
+        mData.add(new ListViewItemData("Draw",DrawActivity.class));
+
+
     }
 
     @Override
