@@ -55,6 +55,8 @@ public class PrimaryView extends View{
             mPath.lineTo(i * 35, i1);
             mPath2.lineTo(i * 35,i1+100);
         }
+        mPath.close();
+        mPath2.close();
     }
 
 

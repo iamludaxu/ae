@@ -5,13 +5,6 @@
     android:orientation="vertical">
 
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FF9990"
-        android:text="我是按钮" />
-
     <!--
     <gift.witch.android.ae.draw.PrimaryView
         android:layout_width="match_parent"
@@ -27,7 +20,18 @@
         android:layout_height="match_parent" />
         -->
 
-    <gift.witch.android.ae.draw.CanvasView
+
+   <!-- <gift.witch.android.ae.draw.CanvasView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
+    <gift.witch.android.ae.draw.PathView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF9990"
+        android:text="我是按钮" />
 </LinearLayout>

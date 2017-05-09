@@ -60,7 +60,8 @@ public class CanvasView extends View {
          */
         Path path = new Path();
         path.moveTo(0,220);
-        path.lineTo(100,550);
+        path.lineTo(100,250);
+        path.close();
         canvas.drawPath(path,myPaint);
 
         /**
