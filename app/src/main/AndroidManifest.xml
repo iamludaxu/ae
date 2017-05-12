@@ -20,6 +20,7 @@
 
         <activity android:name=".butterKnife.ButterKnifeActivity" />
         <activity android:name=".logger.LoggerActivity" />
+        <activity android:name=".animation.AnimationActivity" />
         <activity android:name=".okhttp.OkHttpActivity" />
         <activity android:name=".retrofit2.Retrofit2Activity" />
         <activity android:name=".rxjava.RxJavaActivity" />

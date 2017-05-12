@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import gift.witch.android.ae.animation.AnimationActivity;
 import gift.witch.android.ae.base.BaseCompatActivity;
 import gift.witch.android.ae.butterKnife.ButterKnifeActivity;
 import gift.witch.android.ae.display.DisplayActivity;
@@ -45,7 +46,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         mData.add(new ListViewItemData("Display",DisplayActivity.class));
         mData.add(new ListViewItemData("Layout",LayoutActivity.class));
         mData.add(new ListViewItemData("Draw",DrawActivity.class));
-
+        mData.add(new ListViewItemData("Animation",AnimationActivity.class));
 
     }
 
