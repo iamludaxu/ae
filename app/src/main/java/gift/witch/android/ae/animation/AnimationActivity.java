@@ -22,9 +22,7 @@ import gift.witch.android.ae.R;
 import gift.witch.android.ae.base.BaseCompatActivity;
 
 /**
- *
  * https://iamludaxu.gitbooks.io/android/content/dong-hua.html
- *
  */
 public class AnimationActivity extends BaseCompatActivity implements View.OnClickListener {
 
@@ -36,6 +34,10 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
     private Button mBtn4;
     private Button mBtn5;
     private TextView mBgTV;
+    private Button mBtn6;
+    private TextView mStringTV;
+    private Button mBtn7;
+    private EllipseAnimationView mEllipseAnimationView;
 
 
     @Override
@@ -55,12 +57,18 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
         mBtn4.setOnClickListener(this);
         mBtn5 = (Button) findViewById(R.id.btn5);
         mBtn5.setOnClickListener(this);
+        mBtn6 = (Button) findViewById(R.id.btn6);
+        mBtn6.setOnClickListener(this);
 
-        mBgTV = (TextView)findViewById(R.id.bg);
+        mBgTV = (TextView) findViewById(R.id.bg);
         mBgTV.setBackgroundResource(R.drawable.frame_anim);
         mBgTV.setOnClickListener(this);
-    }
+        mStringTV = (TextView) findViewById(R.id.string_tv);
 
+        mBtn7 = (Button) findViewById(R.id.btn7);
+        mBtn7.setOnClickListener(this);
+        mEllipseAnimationView = (EllipseAnimationView)findViewById(R.id.ellipseview);
+    }
 
 
     @Override
@@ -93,7 +101,7 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
              * ValueAnimator
              */
             ValueAnimator animator = ValueAnimator.ofFloat(0, 360.0F);
-            animator.setDuration(500).start();
+
             /**
              * 更新动画
              */
@@ -105,7 +113,7 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
             });
 
             /**
-             *
+             * 监听动画变化
              */
             animator.addListener(new ValueAnimator.AnimatorListener() {
                 @Override
@@ -129,6 +137,13 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
                 }
             });
 
+            /**
+             * 设置重复次数
+             */
+            animator.setRepeatCount(2);
+
+            animator.setDuration(500).start();
+
 
         } else if (v.getId() == R.id.btn2) {
 
@@ -151,11 +166,11 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
 
             AnimatorSet animatorSet3 = new AnimatorSet();
             animatorSet3.play(animatorA).after(animatorC).before(animatorB);
-            animatorSet3.setDuration(3*1000);
+            animatorSet3.setDuration(3 * 1000);
             animatorSet3.start();
 
 
-        } else if(v.getId() == R.id.btn4){
+        } else if (v.getId() == R.id.btn4) {
             ValueAnimator animator = ValueAnimator.ofFloat(0, 100.0f);
             animator.setInterpolator(new MyInterpolator());
             animator.setEvaluator(new MyTypeEvaluator());
@@ -169,13 +184,18 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
             animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
-                    mBtn4.setTranslationX((Float)animation.getAnimatedValue());
+                    mBtn4.setTranslationX((Float) animation.getAnimatedValue());
                 }
             });
             animator.start();
 
-        } else if(v.getId() == R.id.btn5){
+        } else if (v.getId() == R.id.btn5) {
 
+
+            /**
+             * 加载补间动画
+             */
+            //AnimationUtilsloadAnimation()
 
             /**
              *
@@ -187,7 +207,7 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
             /**
              * Animation
              */
-            Animation animation = new ScaleAnimation(1,0.5f,1,0.5f);
+            Animation animation = new ScaleAnimation(1, 0.5f, 1, 0.5f);
             /**
              * 设置时间
              */
@@ -198,7 +218,7 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
             animation.setFillAfter(true);
             //animation.start();
 
-            Animation animation2 = new TranslateAnimation(0,100,0,100);
+            Animation animation2 = new TranslateAnimation(0, 100, 0, 100);
             animation2.setDuration(3000);
             /**
              * 重复次数 默认是0
@@ -219,7 +239,7 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
              */
             mBtn5.startAnimation(animationSet);
 
-        } else if(v.getId() == R.id.bg){
+        } else if (v.getId() == R.id.bg) {
             AnimationDrawable animation = (AnimationDrawable) mBgTV.getBackground();
             /**
              * 增加帧
@@ -233,6 +253,23 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
              * 停止动画
              */
             animation.stop();
+        } else if (v.getId() == R.id.btn6) {
+            /**
+             * 将A全部替换为B
+             */
+            String startString = "AAAAAAAAAAAAAAAAAAAAAAAAAA";
+            String endString =   "BBBBBBBBBBBBBBBBBBBBBBBBBB";
+            ValueAnimator animator = ValueAnimator.ofObject(new StringEvaluator(), startString, endString);
+            animator.setDuration(2500);
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    mStringTV.setText((String) animation.getAnimatedValue());
+                }
+            });
+            animator.start();
+        }else if(v.getId() == R.id.btn7){
+            mEllipseAnimationView.doAnim();
         }
     }
 }
