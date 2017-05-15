@@ -1,5 +1,6 @@
 package gift.witch.android.ae.animation;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -15,9 +16,16 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
+
 import gift.witch.android.ae.R;
 import gift.witch.android.ae.base.BaseCompatActivity;
 
+/**
+ *
+ * https://iamludaxu.gitbooks.io/android/content/dong-hua.html
+ *
+ */
 public class AnimationActivity extends BaseCompatActivity implements View.OnClickListener {
 
 
@@ -26,7 +34,7 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
     private Button mBtn2;
     private Button mBtn3;
     private Button mBtn4;
-
+    private Button mBtn5;
     private TextView mBgTV;
 
 
@@ -45,6 +53,8 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
         mBtn3.setOnClickListener(this);
         mBtn4 = (Button) findViewById(R.id.btn4);
         mBtn4.setOnClickListener(this);
+        mBtn5 = (Button) findViewById(R.id.btn5);
+        mBtn5.setOnClickListener(this);
 
         mBgTV = (TextView)findViewById(R.id.bg);
         mBgTV.setBackgroundResource(R.drawable.frame_anim);
@@ -69,6 +79,12 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
             ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mBtn, "rotationX", 0.0F, 360.0F)
                     .setDuration(500);
             objectAnimator.setInterpolator(new AccelerateInterpolator());
+            objectAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+
+                }
+            });
             objectAnimator.start();
 
         } else if (v.getId() == R.id.btn1) {
@@ -78,26 +94,58 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
              */
             ValueAnimator animator = ValueAnimator.ofFloat(0, 360.0F);
             animator.setDuration(500).start();
+            /**
+             * 更新动画
+             */
             animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
                     mBtn1.setRotationX((Float) animation.getAnimatedValue());
                 }
             });
+
+            /**
+             *
+             */
+            animator.addListener(new ValueAnimator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+                    Logger.i("onAnimationStart");
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    Logger.i("onAnimationEnd");
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animation) {
+                    Logger.i("onAnimationCancel");
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+                    Logger.i("onAnimationRepeat");
+                }
+            });
+
+
         } else if (v.getId() == R.id.btn2) {
 
             /**
              * PropertyValuesHolder
              */
             PropertyValuesHolder pvhZ = PropertyValuesHolder.ofFloat("rotationX", 0f, 360f);
-            ObjectAnimator.ofPropertyValuesHolder(mBtn2, pvhZ).setDuration(500).start();
+            ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(mBtn2, pvhZ);
+            objectAnimator.setDuration(500).start();
+
 
         } else if (v.getId() == R.id.btn3) {
 
             /**
              * AnimatorSet
              */
-            ObjectAnimator animatorA = ObjectAnimator.ofFloat(mBtn2, "TranslationX", -300, 300, 0);
+            ObjectAnimator animatorA = ObjectAnimator.ofFloat(mBtn3, "TranslationX", -300, 300, -400);
             ObjectAnimator animatorB = ObjectAnimator.ofFloat(mBtn2, "scaleY", 0.5f, 1.5f, 1f);
             ObjectAnimator animatorC = ObjectAnimator.ofFloat(mBtn1, "rotation", 0, 270, 90, 180, 0);
 
@@ -105,26 +153,86 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
             animatorSet3.play(animatorA).after(animatorC).before(animatorB);
             animatorSet3.setDuration(3*1000);
             animatorSet3.start();
-        } else if(v.getId() == R.id.btn4){
 
+
+        } else if(v.getId() == R.id.btn4){
+            ValueAnimator animator = ValueAnimator.ofFloat(0, 100.0f);
+            animator.setInterpolator(new MyInterpolator());
+            animator.setEvaluator(new MyTypeEvaluator());
+            /**
+             * IntEvaluator
+             */
+            //animator.setEvaluator(new IntEvaluator());
+            //animator.setEvaluator(new FloatEvaluator());
+            //animator.setEvaluator(new ArgbEvaluator());
+            animator.setDuration(2500);
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    mBtn4.setTranslationX((Float)animation.getAnimatedValue());
+                }
+            });
+            animator.start();
+
+        } else if(v.getId() == R.id.btn5){
+
+
+            /**
+             *
+             * 这里所有的动作都只是改变图形上的变化，不会改变具体的内容
+             *
+             * 比如一个按钮移动到另外一个位置，表面上在另外一个位置其实触发点还是在原来的位置
+             *
+             *************/
             /**
              * Animation
              */
-            Animation animation = new ScaleAnimation(0,1,0,1);
+            Animation animation = new ScaleAnimation(1,0.5f,1,0.5f);
+            /**
+             * 设置时间
+             */
             animation.setDuration(3000);
+            /**
+             * 停留在最后的状态
+             */
+            animation.setFillAfter(true);
             //animation.start();
+
             Animation animation2 = new TranslateAnimation(0,100,0,100);
             animation2.setDuration(3000);
+            /**
+             * 重复次数 默认是0
+             */
+            animation2.setRepeatCount(1);
+            /**
+             * 停留在初始状态
+             */
+            animation2.setFillBefore(true);
 
             AnimationSet animationSet = new AnimationSet(true);
+            animationSet.setFillAfter(true);
             animationSet.addAnimation(animation);
             animationSet.addAnimation(animation2);
-            mBtn4.startAnimation(animationSet);
+
+            /**
+             * 启动动画组合
+             */
+            mBtn5.startAnimation(animationSet);
 
         } else if(v.getId() == R.id.bg){
-
             AnimationDrawable animation = (AnimationDrawable) mBgTV.getBackground();
+            /**
+             * 增加帧
+             */
+            //animation.addFrame();
+            /**
+             * 启动动画
+             */
             animation.start();
+            /**
+             * 停止动画
+             */
+            animation.stop();
         }
     }
 }

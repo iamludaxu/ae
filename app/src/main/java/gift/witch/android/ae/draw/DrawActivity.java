@@ -6,6 +6,11 @@ import android.widget.Button;
 import gift.witch.android.ae.R;
 import gift.witch.android.ae.base.BaseCompatActivity;
 
+/**
+ *
+ * https://iamludaxu.gitbooks.io/android/content/draw.html
+ *
+ */
 public class DrawActivity extends BaseCompatActivity {
 
 

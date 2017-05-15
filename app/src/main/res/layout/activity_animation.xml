@@ -39,6 +39,12 @@
         android:id="@+id/btn4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="自定义" />
+
+    <Button
+        android:id="@+id/btn5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="view animation" />
 
     <TextView

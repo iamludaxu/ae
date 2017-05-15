@@ -15,6 +15,12 @@ import com.orhanobut.logger.Logger;
 import gift.witch.android.ae.R;
 import gift.witch.android.ae.base.BaseCompatActivity;
 
+
+/**
+ *
+ * https://iamludaxu.gitbooks.io/android/content/layout.html
+ *
+ */
 public class LayoutActivity extends BaseCompatActivity implements View.OnClickListener {
 
 
