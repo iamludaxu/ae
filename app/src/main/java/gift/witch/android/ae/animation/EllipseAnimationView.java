@@ -79,4 +79,5 @@ public class EllipseAnimationView extends View {
         animator.start();
     }
 
+
 }

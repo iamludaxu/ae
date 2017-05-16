@@ -79,6 +79,17 @@
             android:layout_width="match_parent"
             android:layout_height="300dp" />
 
+        <Button
+            android:id="@+id/btn8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="自定义View动画" />
+
+        <gift.witch.android.ae.animation.RectFAnimationView
+            android:id="@+id/rectview"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
 
     </LinearLayout>
 </ScrollView>

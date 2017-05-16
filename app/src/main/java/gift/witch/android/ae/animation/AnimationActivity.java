@@ -5,12 +5,14 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
+import android.graphics.RectF;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.view.animation.BounceInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -38,7 +40,8 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
     private TextView mStringTV;
     private Button mBtn7;
     private EllipseAnimationView mEllipseAnimationView;
-
+    private Button mBtn8;
+    private RectFAnimationView mRectFAnimationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,10 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
         mBtn7 = (Button) findViewById(R.id.btn7);
         mBtn7.setOnClickListener(this);
         mEllipseAnimationView = (EllipseAnimationView)findViewById(R.id.ellipseview);
+
+        mBtn8 = (Button) findViewById(R.id.btn8);
+        mBtn8.setOnClickListener(this);
+        mRectFAnimationView = (RectFAnimationView)findViewById(R.id.rectview);
     }
 
 
@@ -87,12 +94,6 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
             ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mBtn, "rotationX", 0.0F, 360.0F)
                     .setDuration(500);
             objectAnimator.setInterpolator(new AccelerateInterpolator());
-            objectAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator animation) {
-
-                }
-            });
             objectAnimator.start();
 
         } else if (v.getId() == R.id.btn1) {
@@ -269,7 +270,20 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
             });
             animator.start();
         }else if(v.getId() == R.id.btn7){
+            /**
+             * 启动动画
+             */
             mEllipseAnimationView.doAnim();
+        }else if(v.getId() == R.id.btn8){
+            /**
+             * 设置动画
+             */
+            RectF end = new RectF();
+            end.set(0, 50, 0, 150);
+            ObjectAnimator objectAnimator = ObjectAnimator.ofObject(mRectFAnimationView, "rectF",new RectFEvaluator(), end)
+                    .setDuration(500);
+            objectAnimator.setInterpolator(new BounceInterpolator());
+            objectAnimator.start();
         }
     }
 }
