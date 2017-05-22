@@ -91,5 +91,25 @@
             android:layout_height="300dp" />
 
 
+        <Button
+            android:id="@+id/btn9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PropertyValuesHolder和Keyframe" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <View
+                android:id="@+id/keyframe"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="100dp"
+                android:layout_marginTop="100dp"
+                android:background="#23F5F8" />
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

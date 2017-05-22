@@ -2,6 +2,7 @@ package gift.witch.android.ae.animation;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
+import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
@@ -42,6 +43,10 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
     private EllipseAnimationView mEllipseAnimationView;
     private Button mBtn8;
     private RectFAnimationView mRectFAnimationView;
+    private Button mBtn9;
+    private View mKeyFrame;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +80,10 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
         mBtn8 = (Button) findViewById(R.id.btn8);
         mBtn8.setOnClickListener(this);
         mRectFAnimationView = (RectFAnimationView)findViewById(R.id.rectview);
+
+        mBtn9 = (Button) findViewById(R.id.btn9);
+        mBtn9.setOnClickListener(this);
+        mKeyFrame = findViewById(R.id.keyframe);
     }
 
 
@@ -284,6 +293,24 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
                     .setDuration(500);
             objectAnimator.setInterpolator(new BounceInterpolator());
             objectAnimator.start();
+        }else if(v.getId() == R.id.btn9){
+
+            Keyframe frame0 = Keyframe.ofFloat(0f, 0);
+            Keyframe frame1 = Keyframe.ofFloat(0.1f, -20f);
+            Keyframe frame2 = Keyframe.ofFloat(0.2f, 20f);
+            Keyframe frame3 = Keyframe.ofFloat(0.3f, -20f);
+            Keyframe frame4 = Keyframe.ofFloat(0.4f, 20f);
+            Keyframe frame5 = Keyframe.ofFloat(0.5f, -20f);
+            Keyframe frame6 = Keyframe.ofFloat(0.6f, 20f);
+            Keyframe frame7 = Keyframe.ofFloat(0.7f, -20f);
+            Keyframe frame8 = Keyframe.ofFloat(0.8f, 20f);
+            Keyframe frame9 = Keyframe.ofFloat(0.9f, -20f);
+            Keyframe frame10 = Keyframe.ofFloat(1, 0);
+            PropertyValuesHolder frameHolder = PropertyValuesHolder.ofKeyframe("rotation",frame0,frame1,frame2,frame3,frame4,frame5,frame6,frame7,frame8,frame9,frame10);
+
+            Animator animator = ObjectAnimator.ofPropertyValuesHolder(mKeyFrame,frameHolder);
+            animator.setDuration(1000);
+            animator.start();
         }
     }
 }
