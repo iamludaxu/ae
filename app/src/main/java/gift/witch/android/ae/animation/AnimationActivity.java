@@ -45,6 +45,8 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
     private RectFAnimationView mRectFAnimationView;
     private Button mBtn9;
     private View mKeyFrame;
+    private Button mBtn10;
+
 
 
 
@@ -84,6 +86,9 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
         mBtn9 = (Button) findViewById(R.id.btn9);
         mBtn9.setOnClickListener(this);
         mKeyFrame = findViewById(R.id.keyframe);
+
+        mBtn10 = (Button) findViewById(R.id.btn10);
+        mBtn10.setOnClickListener(this);
     }
 
 
@@ -311,6 +316,56 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
             Animator animator = ObjectAnimator.ofPropertyValuesHolder(mKeyFrame,frameHolder);
             animator.setDuration(1000);
             animator.start();
+
+        }else if(v.getId() == R.id.btn10){
+            ObjectAnimator tv1BgAnimator = ObjectAnimator.ofInt(mBtn10, "BackgroundColor",  0xffff00ff, 0xffffff00, 0xffff00ff);
+            /**
+             * 延时
+             */
+            tv1BgAnimator.setStartDelay(1000);
+            ObjectAnimator tv1TranslateY = ObjectAnimator.ofFloat(mBtn10, "translationY", 0, 300, 0);
+            ObjectAnimator tv2TranslateY = ObjectAnimator.ofFloat(mBtn10, "rotation", 0, 270, 90, 180, 0);
+
+            AnimatorSet animatorSet = new AnimatorSet();
+
+
+            /**
+             * 按序列执行动画
+             */
+            //playSequentially(Animator... items);
+            //playSequentially(List<Animator> items);
+            animatorSet.playSequentially(tv1BgAnimator,tv1TranslateY,tv2TranslateY);
+
+
+            /**
+             *同时执行
+             */
+            //playTogether(Animator... items);
+            //playTogether(Collection<Animator> items);
+            //animatorSet.playTogether(tv1BgAnimator,tv1TranslateY,tv2TranslateY);
+
+
+
+            /**
+             *t 通过AnimatorSet.Builder设置动画顺序
+             */
+            AnimatorSet.Builder builder = animatorSet.play(tv1BgAnimator);
+            builder.with(tv1TranslateY);
+
+            /**
+             //和前面动画一起执行
+             public Builder with(Animator anim)
+             //执行前面的动画后才执行该动画
+             public Builder before(Animator anim)
+             //执行先执行这个动画再执行前面动画
+             public Builder after(Animator anim)
+             //延迟n毫秒之后执行动画
+             public Builder after(long delay)
+             */
+            animatorSet.setDuration(1000);
+            animatorSet.start();
+
+
         }
     }
 }
