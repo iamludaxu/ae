@@ -21,6 +21,7 @@ import gift.witch.android.ae.display.DisplayActivity;
 import gift.witch.android.ae.draw.DrawActivity;
 import gift.witch.android.ae.layout.LayoutActivity;
 import gift.witch.android.ae.logger.LoggerActivity;
+import gift.witch.android.ae.message.MessageActivity;
 import gift.witch.android.ae.okhttp.OkHttpActivity;
 import gift.witch.android.ae.recyclerview.RecyclerActivity;
 import gift.witch.android.ae.retrofit2.Retrofit2Activity;
@@ -51,6 +52,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         mData.add(new ListViewItemData("Animation",AnimationActivity.class));
         mData.add(new ListViewItemData("RecyclerView",RecyclerActivity.class));
         mData.add(new ListViewItemData("Dispatch",DispatchActivity.class));
+        mData.add(new ListViewItemData("Message",MessageActivity.class));
 
     }
 

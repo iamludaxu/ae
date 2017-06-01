@@ -29,6 +29,7 @@
         <activity android:name=".draw.DrawActivity" />
         <activity android:name=".recyclerview.RecyclerActivity"/>
         <activity android:name=".dispatch.DispatchActivity"/>
+        <activity android:name=".message.MessageActivity"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

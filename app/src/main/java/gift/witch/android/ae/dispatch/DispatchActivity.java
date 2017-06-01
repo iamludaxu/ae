@@ -11,6 +11,7 @@ import gift.witch.android.ae.base.BaseCompatActivity;
 
 /**
  *
+ * https://iamludaxu.gitbooks.io/android/content/shi-jian-fen-fa.html
  *
  */
 public class DispatchActivity extends BaseCompatActivity implements View.OnClickListener, View.OnTouchListener {
