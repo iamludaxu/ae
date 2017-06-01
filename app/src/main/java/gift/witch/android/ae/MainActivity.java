@@ -16,6 +16,7 @@ import java.util.List;
 import gift.witch.android.ae.animation.AnimationActivity;
 import gift.witch.android.ae.base.BaseCompatActivity;
 import gift.witch.android.ae.butterKnife.ButterKnifeActivity;
+import gift.witch.android.ae.dispatch.DispatchActivity;
 import gift.witch.android.ae.display.DisplayActivity;
 import gift.witch.android.ae.draw.DrawActivity;
 import gift.witch.android.ae.layout.LayoutActivity;
@@ -49,6 +50,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         mData.add(new ListViewItemData("Draw",DrawActivity.class));
         mData.add(new ListViewItemData("Animation",AnimationActivity.class));
         mData.add(new ListViewItemData("RecyclerView",RecyclerActivity.class));
+        mData.add(new ListViewItemData("Dispatch",DispatchActivity.class));
 
     }
 
@@ -62,7 +64,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         mListViewLV.setOnItemClickListener(this);
 
     }
-
 
 
     @Override

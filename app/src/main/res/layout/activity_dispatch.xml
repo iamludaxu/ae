@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <gift.witch.android.ae.dispatch.DispatchViewGroup
+        android:id="@+id/dispathvg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#AD4A0f">
+
+        <gift.witch.android.ae.dispatch.DispatchView
+            android:id="@+id/dispathview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="点击我试试" />
+    </gift.witch.android.ae.dispatch.DispatchViewGroup>
+
+</LinearLayout>
