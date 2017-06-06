@@ -12,6 +12,11 @@ import gift.witch.android.ae.R;
 import gift.witch.android.ae.base.BaseCompatActivity;
 
 
+/**
+ *
+ * https://iamludaxu.gitbooks.io/android/content/xiao-xi-chu-li-ji-zhi.html
+ *
+ */
 public class MessageActivity extends BaseCompatActivity implements View.OnClickListener {
 
 
@@ -136,9 +141,15 @@ public class MessageActivity extends BaseCompatActivity implements View.OnClickL
                     Logger.i("Thread Name:" + name + " 消息接收");
                 }
             };
+
             Looper.loop();
         }
 
     }
+
+
+
+
+
 
 }

@@ -2,13 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="gift.witch.android.ae">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".base.AeApplication"
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:hardwareAccelerated="false"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -17,7 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".butterKnife.ButterKnifeActivity" />
         <activity android:name=".logger.LoggerActivity" />
         <activity android:name=".animation.AnimationActivity" />
@@ -27,11 +28,10 @@
         <activity android:name=".display.DisplayActivity" />
         <activity android:name=".layout.LayoutActivity" />
         <activity android:name=".draw.DrawActivity" />
-        <activity android:name=".recyclerview.RecyclerActivity"/>
-        <activity android:name=".dispatch.DispatchActivity"/>
-        <activity android:name=".message.MessageActivity"/>
+        <activity android:name=".recyclerview.RecyclerActivity" />
+        <activity android:name=".dispatch.DispatchActivity" />
+        <activity android:name=".message.MessageActivity" />
+        <activity android:name=".kotlin.KotlinActivity"></activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

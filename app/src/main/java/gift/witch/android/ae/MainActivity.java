@@ -19,6 +19,7 @@ import gift.witch.android.ae.butterKnife.ButterKnifeActivity;
 import gift.witch.android.ae.dispatch.DispatchActivity;
 import gift.witch.android.ae.display.DisplayActivity;
 import gift.witch.android.ae.draw.DrawActivity;
+import gift.witch.android.ae.kotlin.KotlinActivity;
 import gift.witch.android.ae.layout.LayoutActivity;
 import gift.witch.android.ae.logger.LoggerActivity;
 import gift.witch.android.ae.message.MessageActivity;
@@ -53,6 +54,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         mData.add(new ListViewItemData("RecyclerView",RecyclerActivity.class));
         mData.add(new ListViewItemData("Dispatch",DispatchActivity.class));
         mData.add(new ListViewItemData("Message",MessageActivity.class));
+        mData.add(new ListViewItemData("KotlinActivity",KotlinActivity.class));
 
     }
 
