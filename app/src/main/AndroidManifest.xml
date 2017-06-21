@@ -31,7 +31,17 @@
         <activity android:name=".recyclerview.RecyclerActivity" />
         <activity android:name=".dispatch.DispatchActivity" />
         <activity android:name=".message.MessageActivity" />
-        <activity android:name=".kotlin.KotlinActivity"></activity>
+        <activity android:name=".kotlin.KotlinActivity" />
+        <activity android:name=".test.RobolectricActivity" />
+        <activity android:name=".test.NextRobolectricActivity" />
+
+        <receiver android:name=".test.RobolectricReceiver">
+            <intent-filter>
+                <action android:name="gift.witch.android.action.robolectric" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".test.RobolectricIntentService" />
     </application>
 
 </manifest>
