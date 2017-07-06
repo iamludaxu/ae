@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.functions.Action0;
+import rx.schedulers.Schedulers;
 
 public class RxJavaUtilityTest {
     @Test
@@ -30,5 +31,11 @@ public class RxJavaUtilityTest {
             }
         });
         justObservable.subscribe(ObserverFactory.createObserver());
+    }
+
+    @Test
+    public void onObserveOnTest(){
+        Observable justObservable = Observable.just("just1","just2");//依次发送"just1"和"just2"
+        justObservable.observeOn(Schedulers.immediate()).subscribe(ObserverFactory.createObserver());
     }
 }

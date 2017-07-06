@@ -1,5 +1,7 @@
 package gift.witch.android.ae.rxjava;
 
+import android.util.Log;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
+import rx.functions.Action1;
 import rx.functions.Func0;
 import rx.schedulers.Schedulers;
 
@@ -28,6 +31,7 @@ public class RxJavaTest {
                 subscriber.onCompleted();
             }
         });
+
 
         /**
          * 创建一个观察者
@@ -99,8 +103,8 @@ public class RxJavaTest {
          */
         observable.subscribe(observer2);
         observable.subscribe(observer1);
-
     }
+
 
     @Test
     public void testPrimitives2() {
@@ -235,6 +239,28 @@ public class RxJavaTest {
         repeatObservable.subscribe(createObserver());
     }
 
+
+    @Test
+    public void test(){
+        Observable.interval(1L, TimeUnit.MILLISECONDS)
+                //.subscribeOn(Schedulers.newThread())
+                //将观察者的工作放在新线程环境中
+                .observeOn(Schedulers.newThread())
+                //观察者处理每1000ms才处理一个事件
+                .subscribe(new Action1() {
+                    @Override
+                    public void call(Object o) {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        Log.w("TAG","---->"+o);
+                    }
+
+                });
+    }
+
     private Observer createObserver(){
         /**
          * 创建一个观察者
@@ -290,6 +316,7 @@ public class RxJavaTest {
 
         return observer;
     }
+
 
 
 

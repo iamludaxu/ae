@@ -65,7 +65,6 @@ public class RxJavaActivity extends BaseCompatActivity implements View.OnClickLi
 
 */
 
-
         Observable.create(new Observable.OnSubscribe<Integer>() {
             @Override
             public void call(Subscriber<? super Integer> subscriber) {
