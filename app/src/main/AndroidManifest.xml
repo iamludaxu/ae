@@ -34,6 +34,8 @@
         <activity android:name=".kotlin.KotlinActivity" />
         <activity android:name=".test.RobolectricActivity" />
         <activity android:name=".test.NextRobolectricActivity" />
+        <activity android:name=".dagger2.Dagger2Activity" />
+
 
         <receiver android:name=".test.RobolectricReceiver">
             <intent-filter>
