@@ -13,6 +13,10 @@ public class SingleModule {
     public SingleModule(){
     }
 
+    /**
+     * 表示单例数据
+     * @return
+     */
     @Singleton
     @Provides
     TestData provideSingleTestData(){
