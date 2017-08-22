@@ -43,7 +43,7 @@ public class Dagger2Activity extends BaseCompatActivity {
         LazyTest lazyTest = new LazyTest();
         lazyTest.print();
 
-        CustomModule_ProvideTestDataFactory.create(new CustomModule()).;
+        //CustomModule_ProvideTestDataFactory.create(new CustomModule());
     }
 
 }

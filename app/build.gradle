@@ -29,11 +29,10 @@ configurations.all {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
-    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.orhanobut:logger:1.15'
     compile 'com.android.support:recyclerview-v7:23.1.1'
+
     compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
     compile 'com.jakewharton:butterknife:8.2.1'
     compile 'org.greenrobot:eventbus:3.0.0'
@@ -43,44 +42,38 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
-
     /**
      * dragger2
      */
     //使用APT生成工具，生成需要的DI代码
     apt 'com.google.dagger:dagger-compiler:2.5'
     //JSR250的jar包，使用这个和使用glassFish的那个一样，仅为了使用@Inject 和@Named注解
-    provided 'javax.annotation:jsr250-api:1.0'
+    //provided 'javax.annotation:jsr250-api:1.0'
     //Dagger2 的依赖
     compile 'com.google.dagger:dagger:2.5'
     //compile 'com.google.dagger:dagger-android:2.11'
-
     /**
      * rxjava 2
      */
     //compile "io.reactivex.rxjava2:rxjava:2.1.0"
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
-   // compile 'com.google.guava:guava:22.0-android'
-
+    // compile 'com.google.guava:guava:22.0-android'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-   // compile "org.jetbrains.anko:anko-sdk25:$anko_version"
-
+    // compile "org.jetbrains.anko:anko-sdk25:$anko_version"
     compile 'com.google.guava:guava:22.0-android'
-
+    //compile 'com.github.bumptech.glide:glide:3.7.0'
+    //glide 4.0
     testCompile 'junit:junit:4.12'
     testCompile 'org.robolectric:robolectric:3.2.2'
     testCompile 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
     //如果使用support的Fragment，需添加以下依赖
     testCompile 'org.robolectric:shadows-support-v4:3.0'
-
-    testCompile group: 'org.robolectric', name: 'android-all', version: '4.1.2_r1-robolectric-0'
-
+    testCompile 'org.robolectric:android-all:4.1.2_r1-robolectric-0'
     // required if you want to use Mockito for unit tests
     testCompile 'org.mockito:mockito-core:1.9.5'
     // required if you want to use Powermock for unit tests
     testCompile 'org.powermock:powermock-module-junit4:1.5.6'
     testCompile 'org.powermock:powermock-module-junit4-rule:1.5.6'
     testCompile 'org.powermock:powermock-api-mockito:1.5.6'
-
-
+    compile project(':glide')
 }

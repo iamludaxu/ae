@@ -20,6 +20,7 @@ import gift.witch.android.ae.dagger2.Dagger2Activity;
 import gift.witch.android.ae.dispatch.DispatchActivity;
 import gift.witch.android.ae.display.DisplayActivity;
 import gift.witch.android.ae.draw.DrawActivity;
+import gift.witch.android.ae.glide.GlideActivity;
 import gift.witch.android.ae.kotlin.KotlinActivity;
 import gift.witch.android.ae.layout.LayoutActivity;
 import gift.witch.android.ae.logger.LoggerActivity;
@@ -57,6 +58,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         mData.add(new ListViewItemData("Message", MessageActivity.class));
         mData.add(new ListViewItemData("KotlinActivity", KotlinActivity.class));
         mData.add(new ListViewItemData("Dagger2Activity", Dagger2Activity.class));
+        mData.add(new ListViewItemData("Glide", GlideActivity.class));
 
     }
 
