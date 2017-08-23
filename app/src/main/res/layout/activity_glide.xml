@@ -16,28 +16,58 @@
             android:id="@+id/image1"
             android:layout_width="match_parent"
             android:layout_height="200px"
-            android:layout_margin="4px" />
+            android:layout_margin="4px"
+            android:background="#DDD" />
 
 
         <ImageView
             android:id="@+id/image2"
             android:layout_width="match_parent"
-            android:scaleType="centerInside"
             android:layout_height="200px"
-            android:layout_margin="4px" />
+            android:layout_margin="4px"
+            android:background="#DDD"
+            android:scaleType="centerInside" />
 
 
         <ImageView
             android:id="@+id/image3"
             android:layout_width="match_parent"
             android:layout_height="200px"
-            android:layout_margin="4px" />
+            android:layout_margin="4px"
+            android:background="#DDD" />
 
 
         <ImageView
             android:id="@+id/image4"
             android:layout_width="match_parent"
             android:layout_height="200px"
-            android:layout_margin="4px" />
+            android:layout_margin="4px"
+            android:background="#DDD"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/image5"
+            android:layout_width="match_parent"
+            android:layout_height="200px"
+            android:layout_margin="4px"
+            android:background="#DDD"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/image6"
+            android:layout_width="match_parent"
+            android:layout_height="200px"
+            android:layout_margin="4px"
+            android:background="#DDD"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/image7"
+            android:layout_width="match_parent"
+            android:layout_height="200px"
+            android:layout_margin="4px"
+            android:background="#DDD"
+            android:scaleType="centerCrop" />
+
     </LinearLayout>
 </ScrollView>
