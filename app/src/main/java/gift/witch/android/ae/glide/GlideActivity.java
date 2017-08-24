@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -21,6 +22,7 @@ import java.io.File;
 import gift.witch.android.ae.R;
 import gift.witch.android.ae.base.BaseCompatActivity;
 import gift.witch.glide.GlideApp;
+import gift.witch.glide.Photo;
 
 
 /**
@@ -109,7 +111,7 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
         /**
          * 不显示到ImageView里
          */
-        SimpleTarget<Bitmap> simpleTarget = new SimpleTarget<Bitmap>(50,50){
+        SimpleTarget<Bitmap> simpleTarget = new SimpleTarget<Bitmap>(100,100){
 
             @Override
             public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
@@ -117,10 +119,15 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
             }
         };
 
+
         GlideApp.with(this).asBitmap().load(url)
                 .into(simpleTarget);
 
 
+        Photo photo = new Photo();
+        photo.setUrl(url);
+        GlideApp.with(this).load(photo)
+                .into(imageView5);
 
         RequestOptions cropOptions = new RequestOptions().centerCrop();
         cropOptions.dontTransform();
@@ -129,6 +136,12 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
                 .fallback(new ColorDrawable(Color.CYAN))
                 .error(new ColorDrawable(Color.BLUE))
                 .apply(cropOptions);
+
+        GlideApp.with(this).load(url)
+                .priority(Priority.HIGH)
+                .thumbnail(0.1f);
+
+
     }
 
 
