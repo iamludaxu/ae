@@ -9,9 +9,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
+import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -22,6 +23,7 @@ import java.io.File;
 import gift.witch.android.ae.R;
 import gift.witch.android.ae.base.BaseCompatActivity;
 import gift.witch.glide.GlideApp;
+import gift.witch.glide.MyAnimator;
 import gift.witch.glide.Photo;
 
 
@@ -129,20 +131,25 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
         GlideApp.with(this).load(photo)
                 .into(imageView5);
 
-        RequestOptions cropOptions = new RequestOptions().centerCrop();
-        cropOptions.dontTransform();
-        GlideApp.with(this).load(url)
-                .placeholder(R.drawable.image320)
-                .fallback(new ColorDrawable(Color.CYAN))
-                .error(new ColorDrawable(Color.BLUE))
-                .apply(cropOptions);
 
-        GlideApp.with(this).load(url)
-                .priority(Priority.HIGH)
-                .thumbnail(0.1f);
+        /**
+         * 过渡动画
+         */
+        BitmapTransitionOptions bitmapTransitionOptions =  new BitmapTransitionOptions();
+        //bitmapTransitionOptions.transition(R.anim.glide_animate);
+        bitmapTransitionOptions.transition(new MyAnimator());
 
+
+        GlideApp.with(this).asBitmap().load(url)
+                .transition(bitmapTransitionOptions)
+                .into(imageView6);
+
+        GlideApp.with(this).load(url).thumbnail(0.3f);
+
+        RequestBuilder requestBuilder = GlideApp.with(this).load(url);
 
     }
+
 
 
 
