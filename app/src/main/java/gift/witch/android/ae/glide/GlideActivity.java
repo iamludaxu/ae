@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
@@ -24,6 +23,7 @@ import gift.witch.android.ae.R;
 import gift.witch.android.ae.base.BaseCompatActivity;
 import gift.witch.glide.GlideApp;
 import gift.witch.glide.MyAnimator;
+import gift.witch.glide.MyBlurTransformation;
 import gift.witch.glide.Photo;
 
 
@@ -39,7 +39,7 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
     private String url = "http://img.ivsky.com/img/tupian/pre/201707/24/meilidexiangcunmeijingtupian-003.jpg";
     private String urlgifUrl = "http://img.qqzhi.com/upload/img_4_1566750187D3165349633_23.jpg";
     private String gif = "http://pic27.nipic.com/20130323/12013739_171719485183_2.gif";
-    private ImageView imageView1,imageView2,imageView3,imageView4,imageView5,imageView6,imageView7;
+    private ImageView imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,9 +89,8 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
         requestOptions.encodeFormat(Bitmap.CompressFormat.WEBP);//图片格式
         requestOptions.encodeQuality(90);//图片质量
         requestOptions.format(DecodeFormat.PREFER_RGB_565);//图片模式
-        requestOptions.override(40,40);//图片限制大小
+        requestOptions.override(40, 40);//图片限制大小
         //requestOptions.signature(Key.CHARSET);
-
 
 
         requestOptions.dontTransform();//禁止转换
@@ -113,7 +112,7 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
         /**
          * 不显示到ImageView里
          */
-        SimpleTarget<Bitmap> simpleTarget = new SimpleTarget<Bitmap>(100,100){
+        SimpleTarget<Bitmap> simpleTarget = new SimpleTarget<Bitmap>(100, 100) {
 
             @Override
             public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
@@ -135,7 +134,7 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
         /**
          * 过渡动画
          */
-        BitmapTransitionOptions bitmapTransitionOptions =  new BitmapTransitionOptions();
+        BitmapTransitionOptions bitmapTransitionOptions = new BitmapTransitionOptions();
         //bitmapTransitionOptions.transition(R.anim.glide_animate);
         bitmapTransitionOptions.transition(new MyAnimator());
 
@@ -146,11 +145,20 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
 
         GlideApp.with(this).load(url).thumbnail(0.3f);
 
-        RequestBuilder requestBuilder = GlideApp.with(this).load(url);
+
+        RequestOptions requestOptions1 = new RequestOptions();
+        requestOptions1.transform(new MyBlurTransformation(this));
+        GlideApp.with(this)
+                .load(url)
+                .apply(requestOptions1)
+                .into(imageView7);
+
+        //清除内存缓存(需要在UI线程里调用)
+        //GlideApp.get(this).clearMemory();
+        //清除磁盘缓存(需要在子线程里调用)
+        //GlideApp.get(this).clearDiskCache();
 
     }
-
-
 
 
     @Override

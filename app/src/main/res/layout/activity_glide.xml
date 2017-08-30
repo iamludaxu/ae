@@ -69,5 +69,13 @@
             android:background="#DDD"
             android:scaleType="centerCrop" />
 
+        <ImageView
+            android:id="@+id/image8"
+            android:layout_width="match_parent"
+            android:layout_height="200px"
+            android:layout_margin="4px"
+            android:background="#DDD"
+            android:scaleType="centerCrop" />
+
     </LinearLayout>
 </ScrollView>
