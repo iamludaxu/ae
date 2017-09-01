@@ -12,10 +12,12 @@ import com.bumptech.glide.load.engine.bitmap_recycle.LruBitmapPool;
 import com.bumptech.glide.load.engine.cache.InternalCacheDiskCacheFactory;
 import com.bumptech.glide.load.engine.cache.LruResourceCache;
 import com.bumptech.glide.load.engine.executor.GlideExecutor;
+import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.module.AppGlideModule;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.io.InputStream;
+
 
 @GlideModule
 public final class MyAppGlideModule extends AppGlideModule {
@@ -23,6 +25,7 @@ public final class MyAppGlideModule extends AppGlideModule {
     @Override
     public void registerComponents(Context context, Glide glide, Registry registry) {
 
+        registry.replace(GlideUrl.class, InputStream.class,new OkHttpsUrlLoader.Factory());
         registry.append(Photo.class, InputStream.class,new PhotoModelLoader.Factory());
     }
 

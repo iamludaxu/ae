@@ -39,6 +39,7 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
     private String url = "http://img.ivsky.com/img/tupian/pre/201707/24/meilidexiangcunmeijingtupian-003.jpg";
     private String urlgifUrl = "http://img.qqzhi.com/upload/img_4_1566750187D3165349633_23.jpg";
     private String gif = "http://pic27.nipic.com/20130323/12013739_171719485183_2.gif";
+    private String urlHttps= "https://thumbs.dreamstime.com/z/https%E4%BA%92%E8%81%94%E7%BD%91-16357064.jpg";
     private ImageView imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7;
 
     @Override
@@ -57,7 +58,7 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
 
 
         Glide.with(this)//获取上下文环境
-                .load(url)//图片地址
+                .load(urlHttps)//图片地址
                 .into(imageView1);//图片显示的地方
 
         Glide.with(this).load(R.drawable.hsk1).into(imageView1);
@@ -69,7 +70,7 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
         Uri uri = Uri.parse(url);
         Glide.with(this).load(uri).into(imageView1);
 
-        GlideApp.with(this).load(url)
+        GlideApp.with(this).load(urlHttps)
                 .placeholder(R.drawable.image320)//加载的时候占位
                 .error(new ColorDrawable(Color.BLUE))//请求资源失败的时候
                 .fallback(new ColorDrawable(Color.CYAN))//当请求内容为null的时候显示
