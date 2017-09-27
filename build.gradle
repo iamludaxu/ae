@@ -5,10 +5,11 @@ buildscript {
     ext.anko_version = '0.10.0-beta-2'
 
     repositories {
+        jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        jcenter()
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.2'

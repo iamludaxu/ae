@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
+import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -25,6 +26,8 @@ import gift.witch.glide.GlideApp;
 import gift.witch.glide.MyAnimator;
 import gift.witch.glide.MyBlurTransformation;
 import gift.witch.glide.Photo;
+import jp.wasabeef.glide.transformations.BlurTransformation;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 
 /**
@@ -39,7 +42,7 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
     private String url = "http://img.ivsky.com/img/tupian/pre/201707/24/meilidexiangcunmeijingtupian-003.jpg";
     private String urlgifUrl = "http://img.qqzhi.com/upload/img_4_1566750187D3165349633_23.jpg";
     private String gif = "http://pic27.nipic.com/20130323/12013739_171719485183_2.gif";
-    private String urlHttps= "https://thumbs.dreamstime.com/z/https%E4%BA%92%E8%81%94%E7%BD%91-16357064.jpg";
+    private String urlHttps = "https://thumbs.dreamstime.com/z/https%E4%BA%92%E8%81%94%E7%BD%91-16357064.jpg";
     private ImageView imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7;
 
     @Override
@@ -121,8 +124,12 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
             }
         };
 
+        MultiTransformation multi = new MultiTransformation(
+                new BlurTransformation(25),
+                new RoundedCornersTransformation(128, 0, RoundedCornersTransformation.CornerType.BOTTOM));
 
-        GlideApp.with(this).asBitmap().load(url)
+
+        GlideApp.with(this).asBitmap()
                 .into(simpleTarget);
 
 
@@ -151,7 +158,8 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
         requestOptions1.transform(new MyBlurTransformation(this));
         GlideApp.with(this)
                 .load(url)
-                .apply(requestOptions1)
+                .apply(RequestOptions.bitmapTransform(multi))
+                //.apply(requestOptions1)
                 .into(imageView7);
 
         //清除内存缓存(需要在UI线程里调用)
