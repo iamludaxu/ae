@@ -12,6 +12,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="清除" />
+
+        <Button
+            android:id="@+id/stop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="停止加载" />
+
+        <Button
+            android:id="@+id/resume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="重新加载" />
+
         <ImageView
             android:id="@+id/image1"
             android:layout_width="match_parent"
@@ -66,8 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="200px"
             android:layout_margin="4px"
-            android:background="#DDD"
-            />
+            android:background="#DDD" />
 
         <ImageView
             android:id="@+id/image8"

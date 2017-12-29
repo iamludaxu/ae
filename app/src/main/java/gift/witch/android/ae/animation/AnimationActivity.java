@@ -299,7 +299,6 @@ public class AnimationActivity extends BaseCompatActivity implements View.OnClic
             objectAnimator.setInterpolator(new BounceInterpolator());
             objectAnimator.start();
         }else if(v.getId() == R.id.btn9){
-
             Keyframe frame0 = Keyframe.ofFloat(0f, 0);
             Keyframe frame1 = Keyframe.ofFloat(0.1f, -20f);
             Keyframe frame2 = Keyframe.ofFloat(0.2f, 20f);

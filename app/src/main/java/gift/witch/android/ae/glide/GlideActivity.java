@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -44,6 +45,8 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
     private String gif = "http://pic27.nipic.com/20130323/12013739_171719485183_2.gif";
     private String urlHttps = "https://thumbs.dreamstime.com/z/https%E4%BA%92%E8%81%94%E7%BD%91-16357064.jpg";
     private ImageView imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7;
+    private Button mClearBTN,mStopBTN,mResumeBTN;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,12 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
 
         setContentView(R.layout.activity_glide);
 
+        mClearBTN = (Button) findViewById(R.id.clear);
+        mClearBTN.setOnClickListener(this);
+        mStopBTN = (Button) findViewById(R.id.stop);
+        mStopBTN.setOnClickListener(this);
+        mResumeBTN = (Button) findViewById(R.id.resume);
+        mResumeBTN.setOnClickListener(this);
         imageView1 = (ImageView) findViewById(R.id.image1);
         imageView2 = (ImageView) findViewById(R.id.image2);
         imageView3 = (ImageView) findViewById(R.id.image3);
@@ -58,6 +67,8 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
         imageView5 = (ImageView) findViewById(R.id.image5);
         imageView6 = (ImageView) findViewById(R.id.image6);
         imageView7 = (ImageView) findViewById(R.id.image7);
+
+
 
 
         Glide.with(this)//获取上下文环境
@@ -130,6 +141,7 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
 
 
         GlideApp.with(this).asBitmap()
+                .load(urlHttps)
                 .into(simpleTarget);
 
 
@@ -167,11 +179,30 @@ public class GlideActivity extends BaseCompatActivity implements View.OnClickLis
         //清除磁盘缓存(需要在子线程里调用)
         //GlideApp.get(this).clearDiskCache();
 
+        //GlideApp.with(this).pauseRequests();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        GlideApp.with(this).pauseRequests();
+    }
 
     @Override
     public void onClick(View v) {
+        if (v.getId() == R.id.resume){
+            GlideApp.with(this).resumeRequests();
+        }else if (v.getId() == R.id.stop){
+            GlideApp.with(this).pauseRequests();
+        }else if(v.getId() == R.id.clear){
+            GlideApp.get(this).clearMemory();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    GlideApp.get(GlideActivity.this).clearDiskCache();
+                }
+            }).start();
 
+        }
     }
 }
